@@ -2,7 +2,7 @@ class CreateMovieWorker
   include Sidekiq::Worker
   sidekiq_options(retry: false, queue: 'movies')
 
-  def perform(*args)
+  def perform(*)
     movie = Movie.new(title: Faker::Movie.title)
     movie.save
   end

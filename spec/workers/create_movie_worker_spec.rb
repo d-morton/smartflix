@@ -7,9 +7,8 @@ RSpec.describe CreateMovieWorker do
   Sidekiq::Testing.inline!
 
   it 'adds a movie' do
-    expect{ subject }.to change { Movie.count }
+    expect { subject }.to change(Movie, :count)
 
     expect(Movie.last.title).to be_present
   end
-
 end

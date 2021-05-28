@@ -5,7 +5,6 @@ require 'rails/all'
 # Require the gems listed in Gemfile, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(*Rails.groups)
-Redis.exists_returns_integer = false
 
 module Smartflix
   class Application < Rails::Application

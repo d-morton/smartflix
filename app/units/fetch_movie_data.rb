@@ -16,7 +16,7 @@ class FetchMovieData
   attr_reader :params
 
   def query
-    "#{url}#{id}#{title}#{api_key}"
+    "#{url}#{id}#{title}#{year}#{api_key}"
   end
 
   def url
@@ -35,6 +35,11 @@ class FetchMovieData
     "t=#{params[:title]}&"
   end
 
+  def year
+    return unless params[:year]
+
+    "y=#{params[:year]}&"
+  end
 
   def api_key
     "apikey=#{ENV['OMDB_API_KEY']}"

@@ -33,4 +33,34 @@ RSpec.describe FetchMovieData do
     end
   end
 
+  context 'when a year is provided' do
+    let(:params) { { id: 'tt3896198&', year: 2017 } }
+
+    it 'gets a movie year from omdb' do
+      movie_info = subject.call
+
+      expect(movie_info[:title]).to eq('Guardians of the Galaxy Vol. 2')
+    end
+  end
+
+  context 'when a year is provided and movie cannot be found' do
+    let(:params) { { title: 'Not A Movie Title', year: 2000 } }
+
+    it 'does not find a movie' do
+      movie_info = subject.call
+
+      expect(movie_info[:title]).to eq(nil)
+    end
+  end
+
+  context 'when a searching by title' do
+    let(:params) { { title: 'The' } }
+
+    it 'finds a movie' do
+      movie_info = subject.call
+
+      expect(movie_info[:title]).to be_an_instance_of(String)
+    end
+  end
+
 end

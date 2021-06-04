@@ -1,5 +1,4 @@
 class SearchRandomMovie
-
   START_YEAR = 1950
   END_YEAR = 2021
 
@@ -16,5 +15,4 @@ class SearchRandomMovie
   def random_year
     (START_YEAR..END_YEAR).to_a.sample
   end
-
 end

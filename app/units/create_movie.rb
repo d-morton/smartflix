@@ -1,5 +1,4 @@
 class CreateMovie
-
   def initialize(data: {})
     @data = data
   end
@@ -12,5 +11,4 @@ class CreateMovie
   private
 
   attr_reader :data
-
 end

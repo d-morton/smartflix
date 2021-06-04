@@ -22,7 +22,7 @@ RSpec.describe FetchMovieData do
       it 'gets a movie year from omdb' do
         movie_info = subject.call
 
-        expect(movie_info[:year]).to eq("2017")
+        expect(movie_info[:year]).to eq('2017')
       end
     end
 
@@ -32,7 +32,7 @@ RSpec.describe FetchMovieData do
       it 'gets a movie year from omdb' do
         movie_info = subject.call
 
-        expect(movie_info[:year]).to eq("2017")
+        expect(movie_info[:year]).to eq('2017')
       end
     end
 
@@ -68,5 +68,4 @@ RSpec.describe FetchMovieData do
       expect(movie_info[:title]).to eq(nil)
     end
   end
-
 end

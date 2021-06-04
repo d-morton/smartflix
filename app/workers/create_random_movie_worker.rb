@@ -2,7 +2,7 @@ class CreateRandomMovieWorker
   include Sidekiq::Worker
   sidekiq_options(retry: false, queue: 'movies')
 
-  ATTRIBUTES = %i[title year]
+  ATTRIBUTES = %i[title year].freeze
 
   def perform(*)
     random_movie = SearchRandomMovie.new.call

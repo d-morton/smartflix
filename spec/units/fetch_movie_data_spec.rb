@@ -2,7 +2,9 @@ require 'rails_helper'
 require 'sidekiq/testing'
 
 RSpec.describe FetchMovieData do
-  subject { described_class.new }
+  subject { described_class.new(id: id) }
+
+  let(:id) { 'tt3896198&' }
 
   it 'gets info from OMDB' do
     expect(subject.call).to be_an_instance_of(Hash)

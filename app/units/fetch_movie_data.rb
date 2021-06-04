@@ -1,6 +1,6 @@
 class FetchMovieData
 
-  def initialize(id: 'tt3896198&')
+  def initialize(id:)
     @id = id
   end
 

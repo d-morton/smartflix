@@ -1,5 +1,4 @@
 class FetchMovieData
-
   def initialize(params:)
     @params = params
   end
@@ -20,7 +19,7 @@ class FetchMovieData
   end
 
   def url
-    "http://www.omdbapi.com/?"
+    'http://www.omdbapi.com/?'
   end
 
   def id
@@ -44,5 +43,4 @@ class FetchMovieData
   def api_key
     "apikey=#{ENV['OMDB_API_KEY']}"
   end
-
 end

@@ -183,3 +183,18 @@ Rails/Delegate:
 
 Bundler/OrderedGems:
   Enabled: false
+
+RSpec/NamedSubject:
+  Enabled: false
+
+RSpec/ExpectInHook:
+  Enabled: false
+
+RSpec/MultipleExpectations:
+  Max: 2
+
+RSpec/StubbedMock:
+  Enabled: false
+
+RSpec/MessageSpies:
+  Enabled: false

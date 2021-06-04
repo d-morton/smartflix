@@ -3,9 +3,8 @@ class CreateRandomMovieWorker
   sidekiq_options(retry: false, queue: 'movies')
 
   def perform(*)
-    random_movie = SearchRandomMovie.new.call
+    params = SearchRandomMovie.new.call
 
-    movie = Movie.new(title: random_movie[:title], year: random_movie[:year])
-    movie.save
+    CreateMovie.new(params: params).call
   end
 end

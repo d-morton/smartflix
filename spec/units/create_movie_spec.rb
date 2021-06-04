@@ -1,12 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe CreateMovie do
-  subject { described_class.new(data: data) }
+  subject { described_class.new(params: params) }
 
-  let(:data) { { title: 'movie title'} }
+  let(:params) { { title: 'movie title', year: 2000 } }
 
-  it 'exists' do
-    expect(subject)
+  it 'creates a movie' do
+    expect { subject.call }.to change(Movie, :count).by(1)
   end
-
 end

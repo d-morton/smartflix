@@ -35,5 +35,6 @@
 yarn-debug.log*
 .yarn-integrity
 
-**/.idea/workspace.xml **/.idea/tasks.xml
-/*.iml
+/.idea/*.iml
+/config/local_env.yml
+.env

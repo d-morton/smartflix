@@ -1,18 +1,36 @@
 require 'rails_helper'
-require 'sidekiq/testing'
 
 RSpec.describe FetchMovieData do
-  subject { described_class.new(id: id) }
+  subject { described_class.new(params: params) }
 
-  let(:id) { 'tt3896198&' }
+  context 'when an id is provided' do
+    let(:params) { { id: 'tt3896198&' } }
 
-  it 'gets info from OMDB' do
-    expect(subject.call).to be_an_instance_of(Hash)
+    it 'gets a movie title from omdb' do
+      movie_info = subject.call
+
+      expect(movie_info[:title]).to eq('Guardians of the Galaxy Vol. 2')
+    end
   end
 
-  it 'gets a movie title' do
-    movie_info = subject.call
+  context 'when a title is provided' do
+    let(:params) { { title: 'Guardians of the Galaxy Vol. 2' } }
 
-    expect(movie_info[:title]).to eq("Guardians of the Galaxy Vol. 2")
+    it 'gets a movie year from omdb' do
+      movie_info = subject.call
+
+      expect(movie_info[:year]).to eq("2017")
+    end
   end
+
+  context 'when title and id are provided' do
+    let(:params) { { id: 'tt3896198&', title: 'Guardians of the Galaxy Vol. 2' } }
+
+    it 'gets a movie year from omdb' do
+      movie_info = subject.call
+
+      expect(movie_info[:year]).to eq("2017")
+    end
+  end
+
 end

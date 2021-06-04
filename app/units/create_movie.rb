@@ -1,14 +1,17 @@
 class CreateMovie
-  def initialize(data: {})
-    @data = data
+  ATTRIBUTES = %i[title year].freeze
+
+  def initialize(params: {})
+    @params = params
   end
 
   def call
-    movie = Movie.new(title: data[:title])
+    attributes = params.slice(*ATTRIBUTES)
+    movie = Movie.new(**attributes)
     movie.save
   end
 
   private
 
-  attr_reader :data
+  attr_reader :params
 end

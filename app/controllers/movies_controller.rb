@@ -1,17 +1,17 @@
 class MoviesController < ApplicationController
   def show
-    title = params[:id]
+    title = params[:title]
 
     @movie = find_movie_by_title(title)
     if @movie
       render json: @movie
     else
       get_movie(title)
-      render json: { i_did_not_find_a_movie: true }
+      render "not found"
     end
-
-
   end
+
+  private
 
   def find_movie_by_title(title)
     Movie.find_by_title(title)

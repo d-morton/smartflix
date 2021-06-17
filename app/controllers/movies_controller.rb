@@ -7,7 +7,8 @@ class MoviesController < ApplicationController
       render json: @movie
     else
       get_movie(title)
-      render "not found"
+      @title = title
+      render "not_found"
     end
   end
 

@@ -12,7 +12,7 @@ RSpec.describe MoviesController, type: :controller do
     let(:title){ 'movie' }
 
     it 'finds a movie' do
-      get :show(:title)
+      get :show, params: { title: title }
 
       expect(response).to have_http_status(:ok)
     end
@@ -24,7 +24,7 @@ RSpec.describe MoviesController, type: :controller do
     it 'finds a movie' do
       expect(FindAndCreateMovieWorker).to receive(:perform_async)
 
-      get "/movies/#{title}"
+      get :show, params: { title: title }
     end
   end
 end

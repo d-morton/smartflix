@@ -36,7 +36,7 @@ end
 
 group :test do
   gem 'capybara', '>= 2.15'
-  gem 'database_cleaner-active_record','~> 2.0.1'
+  gem 'database_cleaner-active_record', '~> 2.0.1'
   gem 'selenium-webdriver', '~> 3.142.7'
   gem 'shoulda-matchers', '~> 4.0'
   gem 'webdrivers', '~> 4.6.0'

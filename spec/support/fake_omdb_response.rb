@@ -43,6 +43,7 @@ class FakeOMDBResponse
   end
 
   def body
+    raise 'error'
     RESPONSE[response_type]
   end
 

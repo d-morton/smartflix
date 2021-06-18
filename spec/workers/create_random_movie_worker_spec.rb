@@ -6,9 +6,7 @@ RSpec.describe CreateRandomMovieWorker do
 
   Sidekiq::Testing.inline!
 
-  before { expect(Faraday).to receive(:get).and_return(FakeOMDBResponse.new(:guardians)) }
-
-  it 'adds a movie' do
+  it 'adds a movie', :vcr do
     expect { worker }.to change(Movie, :count)
 
     expect(Movie.last.title).to be_present

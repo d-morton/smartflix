@@ -40,5 +40,5 @@ group :test do
   gem 'selenium-webdriver', '~> 3.142.7'
   gem 'shoulda-matchers', '~> 4.0'
   gem 'webdrivers', '~> 4.6.0'
-  gem 'webmock', '~> 2.1.0'
+  gem 'webmock', '~> 3.13.0'
 end

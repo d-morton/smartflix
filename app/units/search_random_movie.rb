@@ -9,10 +9,12 @@ class SearchRandomMovie
   end
 
   def random_character
-    ('a'..'z').to_a.sample
+    'm'
+    #('a'..'z').to_a.sample
   end
 
   def random_year
-    (START_YEAR..END_YEAR).to_a.sample
+    #(START_YEAR..END_YEAR).to_a.sample
+    2018
   end
 end

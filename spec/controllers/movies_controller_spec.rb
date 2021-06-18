@@ -5,7 +5,8 @@ RSpec.describe MoviesController, type: :controller do
 
   before do
     Movie.create(title:'new title', year: 2021)
-    Movie.create(title:'movie', year: 2021)
+    create(:movie, title:'movie', year: 2021)
+    create(:movie, title:'movie', year: 2021)
   end
 
   context 'when the movie is in the database' do

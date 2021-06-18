@@ -6,9 +6,13 @@ RSpec.describe CreateRandomMovieWorker do
 
   Sidekiq::Testing.inline!
 
-  it 'adds a movie', :vcr do
-    expect { worker }.to change(Movie, :count)
+  let(:injected_fetch_movie_data) { OpenStruct.new(call: 'movie_data') }
+  let(:injected_create_movie) { OpenStruct.new(call: 'create_movie') }
 
-    expect(Movie.last.title).to be_present
+  it 'adds a movie' do
+    expect(FetchMovieData).to receive(:new).and_return(injected_fetch_movie_data)
+    expect(CreateMovie).to receive(:new).and_return(injected_create_movie)
+
+    worker
   end
 end

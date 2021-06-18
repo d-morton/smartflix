@@ -6,11 +6,13 @@ RSpec.describe CreateRandomMovieWorker do
 
   Sidekiq::Testing.inline!
 
-  before { expect(Faraday).to receive(:get).and_return(FakeOMDBResponse.new(:guardians)) }
+  let(:injected_fetch_movie_data) { OpenStruct.new(call: 'movie_data') }
+  let(:injected_create_movie) { OpenStruct.new(call: 'create_movie') }
 
   it 'adds a movie' do
-    expect { worker }.to change(Movie, :count)
+    expect(FetchMovieData).to receive(:new).and_return(injected_fetch_movie_data)
+    expect(CreateMovie).to receive(:new).and_return(injected_create_movie)
 
-    expect(Movie.last.title).to be_present
+    worker
   end
 end

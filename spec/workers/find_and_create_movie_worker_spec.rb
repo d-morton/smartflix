@@ -8,7 +8,7 @@ RSpec.describe FindAndCreateMovieWorker do
 
   let(:title) { 'Superman' }
 
-  it 'adds a movie', :aggregate_failures do
+  it 'adds a movie', :vcr, :aggregate_failures do
     expect { subject }.to change(Movie, :count).by 1
 
     expect(Movie.last.title).to eq(title)

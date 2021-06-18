@@ -1,24 +1,22 @@
 class MoviesController < ApplicationController
   def show
-    title = params[:title]
+    @title = params[:title]
+    @movie = find_movie_by_title
 
-    @movie = find_movie_by_title(title)
-    if @movie
-      render json: @movie
-    else
-      get_movie(title)
-      @title = title
-      render "not_found"
-    end
+    render json: @movie if movie
+    movie_not_found unless movie
   end
 
   private
 
-  def find_movie_by_title(title)
-    Movie.find_by_title(title)
+  attr_reader :title, :movie
+
+  def find_movie_by_title
+    Movie.find_by(title: title)
   end
 
-  def get_movie(title)
+  def movie_not_found
     FindAndCreateMovieWorker.perform_async(title)
+    render 'not_found'
   end
 end

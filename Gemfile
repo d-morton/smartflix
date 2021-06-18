@@ -17,8 +17,10 @@ gem 'turbolinks', '~> 5'
 gem 'webpacker', '~> 4.0'
 
 group :development, :test do
+  gem 'factory_bot', '~> 6.2.0'
   gem 'pry-byebug', '~> 3.9.0'
   gem 'rspec-rails', '~> 5.0.0'
+  gem 'vcr', '~> 6.0.0'
 end
 
 group :development do
@@ -34,7 +36,9 @@ end
 
 group :test do
   gem 'capybara', '>= 2.15'
+  gem 'database_cleaner-active_record','~> 2.0.1'
   gem 'selenium-webdriver', '~> 3.142.7'
   gem 'shoulda-matchers', '~> 4.0'
   gem 'webdrivers', '~> 4.6.0'
+  gem 'webmock', '~> 2.1.0'
 end
